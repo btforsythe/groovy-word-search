@@ -1,0 +1,1 @@
+My groovy kata solution for [Jim Kirkbride's Word Search kata](https://github.com/jameskbride/word-search-kata).
