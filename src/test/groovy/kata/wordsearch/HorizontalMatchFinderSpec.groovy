@@ -13,7 +13,7 @@ class HorizontalMatchFinderSpec extends Specification {
 		def result = underTest.findMatch('A')
 
 		then:
-		result == [x: 0, y: 0]
+		result.coordinate == [x: 0, y: 0]
 	}
 
 	def "should find a single letter from a single row"() {
@@ -29,6 +29,28 @@ class HorizontalMatchFinderSpec extends Specification {
 		def result = underTest.findMatch('Y')
 
 		then:
-		result == [x: 1, y: 0]
+		result.coordinate == [x: 1, y: 0]
+	}
+
+	def "should not find a match"() {
+		given:
+		HorizontalMatchFinder underTest = new HorizontalMatchFinder(grid: new LetterGrid(letters: [['A']]))
+
+		when:
+		def result = underTest.findMatch('B')
+
+		then:
+		result.foundMatch == false
+	}
+
+	def "should find a match"() {
+		given:
+		HorizontalMatchFinder underTest = new HorizontalMatchFinder(grid: new LetterGrid(letters: [['A']]))
+
+		when:
+		def result = underTest.findMatch('A')
+
+		then:
+		result.foundMatch == true
 	}
 }
