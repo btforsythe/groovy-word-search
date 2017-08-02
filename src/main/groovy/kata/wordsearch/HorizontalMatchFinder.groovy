@@ -7,8 +7,9 @@ class HorizontalMatchFinder {
 	def grid
 
 	def findMatch(toMatch) {
-		def x = (0..grid.size() - 1).findIndexOf { grid.letterAt(it, 0) == toMatch }
+		def sequence = (0..grid.size() - 1).collect { grid.letterAt(it, 0) }.join('')
 
-		x == -1 ? NO_MATCH : new Match(coordinate: [x: x, y: 0])
+		def matchLocation = sequence.indexOf(toMatch)
+		matchLocation == -1 ? NO_MATCH : new Match(coordinate: [x: matchLocation, y: 0])
 	}
 }

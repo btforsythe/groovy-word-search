@@ -53,4 +53,21 @@ class HorizontalMatchFinderSpec extends Specification {
 		then:
 		result.foundMatch == true
 	}
+
+	def "should match two character sequence"() {
+		given:
+		LetterGrid grid = new LetterGrid(4)
+		grid.putLetterAt(0, 0, 'A')
+		grid.putLetterAt(1, 0, 'C')
+		grid.putLetterAt(2, 0, 'A')
+		grid.putLetterAt(3, 0, 'B')
+
+		HorizontalMatchFinder underTest = new HorizontalMatchFinder(grid: grid)
+
+		when:
+		def result = underTest.findMatch('AB')
+
+		then:
+		result.coordinate == [x: 2, y: 0]
+	}
 }
