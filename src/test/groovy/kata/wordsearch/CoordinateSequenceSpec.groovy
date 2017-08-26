@@ -4,14 +4,14 @@ import spock.lang.Specification
 
 class CoordinateSequenceSpec extends Specification {
 
-	final static int XINIT = 42
-	final static int YINIT = 86
+	final static int X_INIT = 42
+	final static int Y_INIT = 86
 	
-	CoordinateSequence underTest = new CoordinateSequence(xInit: XINIT, yInit: YINIT)
+	CoordinateSequence underTest = new CoordinateSequence(xInit: X_INIT, yInit: Y_INIT)
 	
 	def "should return initial coordinate"() {
 		expect:
-		underTest.next() == [x: XINIT, y: YINIT]
+		underTest.next() == [x: X_INIT, y: Y_INIT]
 	}
 	
 	def "should return increasing x coordinate"() {
@@ -19,8 +19,8 @@ class CoordinateSequenceSpec extends Specification {
 		underTest.xIncrement = 1
 		
 		then:
-		underTest.next() == [x: XINIT, y: YINIT]
-		underTest.next() == [x: XINIT + 1, y: YINIT]
+		underTest.next() == [x: X_INIT, y: Y_INIT]
+		underTest.next() == [x: X_INIT + 1, y: Y_INIT]
 	}
 
 	def "should return increasing y coordinate"() {
@@ -28,8 +28,8 @@ class CoordinateSequenceSpec extends Specification {
 		underTest.yIncrement = 1
 		
 		then:
-		underTest.next() == [x: XINIT, y: YINIT]
-		underTest.next() == [x: XINIT, y: YINIT + 1]
+		underTest.next() == [x: X_INIT, y: Y_INIT]
+		underTest.next() == [x: X_INIT, y: Y_INIT + 1]
 	}
 	
 	def "should reset"() {
@@ -42,6 +42,19 @@ class CoordinateSequenceSpec extends Specification {
 		underTest.reset()
 		
 		then:
-		underTest.next()== [x: XINIT, y: YINIT]
+		underTest.next()== [x: X_INIT, y: Y_INIT]
+	}
+	
+	def "should initially return nulls for current"() {
+		expect:
+		underTest.current() == [x: null, y: null]
+	}
+	
+	def "should return initial coordinate for current after next"() {
+		given:
+		underTest.next()
+		
+		expect:
+		underTest.current() == [x: X_INIT, y: Y_INIT]
 	}
 }

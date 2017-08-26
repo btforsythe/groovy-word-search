@@ -6,6 +6,9 @@ import spock.lang.Specification
 
 class LetterIteratorSpec extends Specification {
 
+	final static int X_INIT = 42
+	final static int Y_INIT = 86
+	
 	LetterGrid grid = Mock()
 	CoordinateSequence sequence = Mock()
 	
@@ -17,10 +20,9 @@ class LetterIteratorSpec extends Specification {
 	}
 	
 	def "should offer next"() {
-		given:
-		
 		when:
-		grid.letterAt(0, 0) >> 'A'
+		sequence.next() >> [x: X_INIT, y: Y_INIT]
+		grid.letterAt(X_INIT, Y_INIT) >> 'A'
 		
 		then:
 		underTest.next() == 'A'

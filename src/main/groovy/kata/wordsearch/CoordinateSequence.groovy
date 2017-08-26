@@ -8,8 +8,8 @@ class CoordinateSequence {
 	int xIncrement = 0
 	int yIncrement = 0
 	
-	int xCurrent
-	int yCurrent
+	def xCurrent
+	def yCurrent
 	
 	def next() {
 		xCurrent = xCurrent ?: xInit
@@ -25,5 +25,9 @@ class CoordinateSequence {
 	def reset() {
 		xCurrent = xInit
 		yCurrent = yInit
+	}
+	
+	def current() {
+		[x: xCurrent, y: yCurrent]
 	}
 }
