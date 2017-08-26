@@ -7,6 +7,6 @@ class WordSearch {
 
 	WordSearch(words, letters) {
 		this.words = words
-		this.grid = new LetterGrid(letters: letters)
+		this.grid = new LetterGrid(letters)
 	}
 }

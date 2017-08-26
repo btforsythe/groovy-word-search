@@ -4,9 +4,11 @@ class LetterGrid {
 
 	String[][] letters;
 
-	LetterGrid() {}
+	LetterGrid(String[][] letters) {
+		this.letters = letters
+	}
 
-	LetterGrid(size) {
+	LetterGrid(int size) {
 		letters = new String[size][size]
 	}
 

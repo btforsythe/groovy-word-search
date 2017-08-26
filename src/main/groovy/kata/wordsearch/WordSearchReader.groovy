@@ -1,8 +1,8 @@
 package kata.wordsearch
 
 class WordSearchReader {
+	
 	String filepath
-
 
 	def read() {
 		def reader = createReader()
