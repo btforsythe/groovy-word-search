@@ -2,6 +2,8 @@ package kata.wordsearch;
 
 class LetterIterator implements Iterator<Character> {
 
+	LetterGrid grid;
+	
 	@Override
 	boolean hasNext() {
 		// TODO Auto-generated method stub
@@ -10,7 +12,6 @@ class LetterIterator implements Iterator<Character> {
 
 	@Override
 	Character next() {
-		// TODO Auto-generated method stub
-		return null;
+		return 'A';
 	}
 }
