@@ -7,7 +7,9 @@ import spock.lang.Specification
 class LetterIteratorSpec extends Specification {
 
 	LetterGrid grid = Mock()
-	LetterIterator underTest = new LetterIterator(xInit: 0, yInit: 0, grid: grid)
+	CoordinateSequence sequence = Mock()
+	
+	LetterIterator underTest = new LetterIterator(sequence: sequence, grid: grid)
 	
 	def "should be an iterator"() {
 		expect:

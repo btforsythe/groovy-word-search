@@ -2,6 +2,8 @@ package kata.wordsearch;
 
 class LetterIterator implements Iterator<Character> {
 
+	CoordinateSequence sequence
+	
 	def xInit
 	def yInit
 	
