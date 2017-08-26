@@ -4,30 +4,23 @@ class CoordinateSequence {
 
 	int xInit
 	int yInit
-	
+
 	int xIncrement = 0
 	int yIncrement = 0
-	
-	def xCurrent
-	def yCurrent
-	
+
+	def current
+
 	def next() {
-		xCurrent = xCurrent ?: xInit
-		yCurrent = yCurrent ?: yInit
-		
-		def next = [x: xCurrent, y: yCurrent]
-		xCurrent += xIncrement
-		yCurrent += yIncrement
-		
-		return next
+		if(current) {
+			current.x += xIncrement
+			current.y += yIncrement
+		} else {
+			current = [x: xInit, y: yInit]
+		}
+		return current
 	}
-	
+
 	def reset() {
-		xCurrent = xInit
-		yCurrent = yInit
-	}
-	
-	def current() {
-		[x: xCurrent, y: yCurrent]
+		current = null
 	}
 }

@@ -45,9 +45,9 @@ class CoordinateSequenceSpec extends Specification {
 		underTest.next()== [x: X_INIT, y: Y_INIT]
 	}
 	
-	def "should initially return nulls for current"() {
+	def "should initially return null for current"() {
 		expect:
-		underTest.current() == [x: null, y: null]
+		underTest.current == null
 	}
 	
 	def "should return initial coordinate for current after next"() {
@@ -55,6 +55,6 @@ class CoordinateSequenceSpec extends Specification {
 		underTest.next()
 		
 		expect:
-		underTest.current() == [x: X_INIT, y: Y_INIT]
+		underTest.current == [x: X_INIT, y: Y_INIT]
 	}
 }
