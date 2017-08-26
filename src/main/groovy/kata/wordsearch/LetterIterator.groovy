@@ -5,8 +5,8 @@ class LetterIterator implements Iterator<Character> {
 	def xInit
 	def yInit
 	
-	def xIncrement = 0
-	def yIncrement = 0
+	def xIncrement
+	def yIncrement
 	
 	def xCurrent
 	def yCurrent
@@ -26,9 +26,9 @@ class LetterIterator implements Iterator<Character> {
 			throw new NoSuchElementException()
 		}
 		
-		def next = grid.letterAt(xCurrent, yInit)
-		xCurrent += xIncrement
-		yCurrent += yIncrement
+		def next = grid.letterAt(xCurrent, yCurrent)
+		xCurrent += xIncrement?: 0
+		yCurrent += yIncrement?: 0
 		
 		return next
 	}
