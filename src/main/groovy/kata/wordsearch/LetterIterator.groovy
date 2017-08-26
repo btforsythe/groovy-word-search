@@ -2,11 +2,13 @@ package kata.wordsearch;
 
 class LetterIterator implements Iterator<Character> {
 
+	def xInit;
+	def yInit;
 	LetterGrid grid;
 	
 	@Override
 	boolean hasNext() {
-		return true;
+		return grid.letterAt(xInit, yInit);
 	}
 
 	@Override
