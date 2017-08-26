@@ -19,4 +19,12 @@ class LetterIteratorSpec extends Specification {
 		then:
 		underTest.next() == 'A'
 	}
+	
+	def "should have next"() {
+		when:
+		LetterIterator underTest = new LetterIterator()
+		
+		then:
+		underTest.hasNext()
+	}
 }

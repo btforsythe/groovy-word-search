@@ -6,8 +6,7 @@ class LetterIterator implements Iterator<Character> {
 	
 	@Override
 	boolean hasNext() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
