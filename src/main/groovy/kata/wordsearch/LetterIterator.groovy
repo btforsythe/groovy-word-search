@@ -2,17 +2,34 @@ package kata.wordsearch;
 
 class LetterIterator implements Iterator<Character> {
 
-	def xInit;
-	def yInit;
-	LetterGrid grid;
+	def xInit
+	def yInit
 	
+	def xIncrement = 0
+	def yIncrement = 0
+	
+	def xCurrent
+	def yCurrent
+	
+	LetterGrid grid
+
 	@Override
 	boolean hasNext() {
-		return grid.letterAt(xInit, yInit);
+		xCurrent = xCurrent ?: xInit
+		yCurrent = yCurrent ?: yInit
+		return grid.letterAt(xCurrent, yCurrent)
 	}
 
 	@Override
 	Character next() {
-		return 'A';
+		if(!hasNext()) {
+			throw new NoSuchElementException()
+		}
+		
+		def next = grid.letterAt(xCurrent, yInit)
+		xCurrent += xIncrement
+		yCurrent += yIncrement
+		
+		return next
 	}
 }
