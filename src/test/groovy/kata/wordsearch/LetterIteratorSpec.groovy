@@ -5,26 +5,20 @@ import spock.lang.Specification
 class LetterIteratorSpec extends Specification {
 
 	LetterGrid grid = Mock()
+	LetterIterator underTest = new LetterIterator(xInit: 0, yInit: 0, grid: grid)
 	
 	def "should be an iterator"() {
-		when:
-		LetterIterator underTest = new LetterIterator()
-		
-		then:
+		expect:
 		underTest instanceof Iterator
 	}
 	
 	def "should offer next"() {
-		when:
-		LetterIterator underTest = new LetterIterator()
-		
-		then:
+		expect:
 		underTest.next() == 'A'
 	}
 	
 	def "should have next"() {
 		when:
-		LetterIterator underTest = new LetterIterator(xInit: 0, yInit: 0, grid: grid)
 		grid.letterAt(0, 0) >> 'Z'
 		
 		then:
@@ -32,10 +26,7 @@ class LetterIteratorSpec extends Specification {
 	}
 	
 	def "should not have next"() {
-		when:
-		LetterIterator underTest = new LetterIterator(xInit: 0, yInit: 0, grid: grid)
-		
-		then:
+		expect:
 		!underTest.hasNext()
 	}
 }
