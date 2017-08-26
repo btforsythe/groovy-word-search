@@ -13,9 +13,10 @@ class LetterGridSpec extends Specification {
 	
 	def "should put letter at coordinates"() {
 		given:
-		underTest.putLetterAt(2, 2, 'Z')
+		def coordinate = [x: 2, y: 2]
+		underTest.putLetterAt(coordinate, 'Z')
 
 		expect:
-		underTest.letterAt(2, 2) == 'Z'
+		underTest.letterAt(coordinate) == 'Z'
 	}
 }

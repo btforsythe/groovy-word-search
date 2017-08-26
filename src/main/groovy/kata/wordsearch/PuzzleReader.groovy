@@ -1,6 +1,6 @@
 package kata.wordsearch
 
-class WordSearchReader {
+class PuzzleReader {
 	
 	String filepath
 
@@ -9,7 +9,7 @@ class WordSearchReader {
 		def words = reader.readLine().split(",")
 
 		String[][] letters = readLetters(reader)
-		new WordSearch(words, letters)
+		new Puzzle(words, letters)
 	}
 
 	def createReader() {

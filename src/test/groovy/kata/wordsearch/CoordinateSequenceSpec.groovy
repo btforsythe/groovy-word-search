@@ -1,5 +1,7 @@
 package kata.wordsearch
 
+import javax.swing.text.DefaultEditorKit.DeleteNextCharAction
+
 import spock.lang.Specification
 
 class CoordinateSequenceSpec extends Specification {
@@ -56,5 +58,17 @@ class CoordinateSequenceSpec extends Specification {
 		
 		expect:
 		underTest.current == [x: X_INIT, y: Y_INIT]
+	}
+	
+	def "should create new current coordinate, not overwrite old one"() {
+		given:
+		underTest.xIncrement = 1
+		def firstCoordinate = underTest.next()
+		
+		when:
+		underTest.next()
+		
+		then: "value of first coordinate is not changed"
+		firstCoordinate == [x: X_INIT, y: Y_INIT]
 	}
 }

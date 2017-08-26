@@ -13,6 +13,6 @@ class LetterGrid {
 	}
 
 	def size() { letters.size() }
-	def letterAt(x, y) { letters[y][x] }
-	def putLetterAt = { x, y, letter -> letters[y][x] = letter}
+	def letterAt(coordinate) { letters[coordinate.y][coordinate.x] }
+	def putLetterAt = { coordinate, letter -> letters[coordinate.y][coordinate.x] = letter}
 }

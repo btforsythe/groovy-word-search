@@ -9,10 +9,18 @@ class LetterIteratorSpec extends Specification {
 	final static int X_INIT = 42
 	final static int Y_INIT = 86
 	
+	def INIT_COORDINATE = [x: X_INIT, y: Y_INIT]
+	def SECOND_COORDINATE = [x: X_INIT + 1, y: Y_INIT + 1]
+	def THIRD_COORDINATE = [x: X_INIT + 2, y: Y_INIT + 2]
+	
 	LetterGrid grid = Mock()
 	CoordinateSequence sequence = Mock()
 	
 	LetterIterator underTest = new LetterIterator(sequence: sequence, grid: grid)
+	
+	def setup() {
+		sequence.next() >>> [INIT_COORDINATE, SECOND_COORDINATE, THIRD_COORDINATE]
+	}
 	
 	def "should be an iterator"() {
 		expect:
@@ -21,8 +29,7 @@ class LetterIteratorSpec extends Specification {
 	
 	def "should offer next"() {
 		when:
-		sequence.next() >> [x: X_INIT, y: Y_INIT]
-		grid.letterAt(X_INIT, Y_INIT) >> 'A'
+		grid.letterAt(INIT_COORDINATE) >> 'A'
 		
 		then:
 		underTest.next() == 'A'
@@ -30,7 +37,7 @@ class LetterIteratorSpec extends Specification {
 	
 	def "should have next"() {
 		when:
-		grid.letterAt(0, 0) >> 'Z'
+		grid.letterAt(INIT_COORDINATE) >> 'Z'
 		
 		then:
 		underTest.hasNext()
@@ -43,8 +50,7 @@ class LetterIteratorSpec extends Specification {
 	
 	def "should not have second letter"() {
 		given:
-		underTest.xIncrement = 1
-		grid.letterAt(0, 0) >> 'Z'
+		grid.letterAt(INIT_COORDINATE) >> 'Z'
 		
 		when:
 		underTest.next()
@@ -61,26 +67,11 @@ class LetterIteratorSpec extends Specification {
 		thrown(NoSuchElementException)
 	}
 	
-	def "should return two letters horizontally"() {
-		given:
-		underTest.xIncrement = 1
-		
+	def "should return two letters"() {
 		when:
-		grid.letterAt(0, 0) >> 'A'
-		grid.letterAt(1, 0) >> 'B'
-		
-		then:
-		underTest.collect() == ['A', 'B']
-	}
-	
-	def "should iterate vertically"() {\
-		given:
-		underTest.yIncrement = 1
-		
-		when:
-		grid.letterAt(0, 0) >> 'A'
-		grid.letterAt(0, 1) >> 'B'
-		
+		grid.letterAt(INIT_COORDINATE) >> 'A'
+		grid.letterAt(SECOND_COORDINATE) >> 'B'
+
 		then:
 		underTest.collect() == ['A', 'B']
 	}

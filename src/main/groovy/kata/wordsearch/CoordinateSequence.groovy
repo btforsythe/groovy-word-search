@@ -17,7 +17,7 @@ class CoordinateSequence {
 		} else {
 			current = [x: xInit, y: yInit]
 		}
-		return current
+		return [x: current.x, y: current.y]
 	}
 
 	def reset() {
