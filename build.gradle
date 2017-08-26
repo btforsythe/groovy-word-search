@@ -10,12 +10,5 @@ repositories {
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.9'
 	testCompile 'org.spockframework:spock-core:1.1-groovy-2.4',
-			'org.hamcrest:hamcrest-all:1.3',
-			'org.mockito:mockito-core:1.10.+',
-			'junit:junit:4.+'
-}
-
-configurations {
-	all*.exclude module: 'hamcrest-core'
-	all*.exclude module: 'mockito-all'
+		'net.bytebuddy:byte-buddy:1.7.3'
 }
