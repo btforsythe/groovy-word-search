@@ -7,7 +7,7 @@ class LetterGrid {
 	LetterGrid(String[][] letters) {
 		this.letters = letters
 	}
-
+	
 	LetterGrid(int size) {
 		letters = new String[size][size]
 	}
