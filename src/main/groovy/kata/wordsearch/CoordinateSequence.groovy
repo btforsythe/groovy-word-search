@@ -6,12 +6,24 @@ class CoordinateSequence {
 	int yInit
 	
 	int xIncrement = 0
+	int yIncrement = 0
 	
-	int xCurrent = 0
+	int xCurrent
+	int yCurrent
 	
 	def next() {
-		def next = [x: xCurrent, y: 0]
+		xCurrent = xCurrent ?: xInit
+		yCurrent = yCurrent ?: yInit
+		
+		def next = [x: xCurrent, y: yCurrent]
 		xCurrent += xIncrement
+		yCurrent += yIncrement
+		
 		return next
+	}
+	
+	def reset() {
+		xCurrent = xInit
+		yCurrent = yInit
 	}
 }
